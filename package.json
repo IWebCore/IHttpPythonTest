@@ -1,0 +1,11 @@
+{
+    
+    "name":"IHttpPythonTest",
+    "group":"IWebCore",
+    "version":"1.0.0",
+    "author": "yuekeyuan",
+    "summary":"python test lib embedded in IHttp",
+    "dependencies": {
+        "ICore": "1.0.0"
+    }
+}
