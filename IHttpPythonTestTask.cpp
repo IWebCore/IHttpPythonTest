@@ -62,6 +62,7 @@ void IHttpPythonTestTask::checkPytestExist()
         QString tip = "Error executing command:" + process.errorString();
         IHttpPythonTestAbort::abortExecuteCommandError(tip, $ISourceLocation);
     }
+
     QByteArray result = process.readAllStandardOutput();
     if (!result.isEmpty()) {
         return;
@@ -150,14 +151,21 @@ void IHttpPythonTestTask::startTest()
     process->setWorkingDirectory(m_scriptDir);
 
     QStringList arguments;
+#if defined(_WIN32) || defined(WIN32)
     arguments << "--html=report.html"
               << "--self-contained-html";
+#endif
 
     process->start("pytest", arguments);
     process->waitForFinished();
-    qDebug().noquote() << process->readAll();
+
+    qDebug().noquote() << process->readAllStandardOutput();
+    qDebug().noquote() << process->readAllStandardError();
     delete process;
+
+#if defined(_WIN32) || defined(WIN32)
     openTest();
+#endif
 }
 
 void IHttpPythonTestTask::openTest()
