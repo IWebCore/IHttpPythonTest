@@ -1,14 +1,14 @@
-cacheToIncludes(${CMAKE_CURRENT_LIST_DIR})
+loadToIncludes(${CMAKE_CURRENT_LIST_DIR})
 
-cacheToHeaders(
+loadToHeaders(
     ${CMAKE_CURRENT_LIST_DIR}/IHttpPythonTestAnnomacro.h
     ${CMAKE_CURRENT_LIST_DIR}/IHttpPythonTestTask.h
 )
     
-cacheToSources(
+loadToSources(
     ${CMAKE_CURRENT_LIST_DIR}/IHttpPythonTestTask.cpp
 )
 
-cacheToDefinitions(
+loadToDefinitions(
     IWEBCORE_PROJECT_DIR="${CMAKE_SOURCE_DIR}"
 )

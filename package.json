@@ -1,11 +1,11 @@
 {
     
     "name":"IHttpPythonTest",
-    "group":"IWebCore",
     "version":"1.0.0",
     "author": "yuekeyuan",
     "summary":"python test lib embedded in IHttp",
+    "license":"AGPL-3.0-only",
     "dependencies": {
-        "ICore": "1.0.0"
+        "ICore": "*"
     }
 }
