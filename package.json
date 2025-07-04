@@ -7,5 +7,6 @@
     "license":"AGPL-3.0-only",
     "dependencies": {
         "ICore": "*"
-    }
+    },
+    "changelog":"init project"
 }
