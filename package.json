@@ -4,6 +4,7 @@
     "version":"1.0.0",
     "author": "yuekeyuan",
     "summary":"python test lib embedded in IHttp",
+    "keywords": ["test", "python", "IHttp", "plugin", "embedded", "unittest"],
     "license":"AGPL-3.0-only",
     "dependencies": {
         "ICore": "*"
