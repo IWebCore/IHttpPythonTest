@@ -9,5 +9,7 @@
     "dependencies": {
         "ICore": "*"
     },
-    "changelog":"init project"
+    "changelog":"init project",
+    "isGlobal": true,
+    "publisher": "yuekeyuan"
 }
