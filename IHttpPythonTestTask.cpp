@@ -1,7 +1,7 @@
 ﻿#include "IHttpPythonTestTask.h"
 #include "core/config/IContextImport.h"
 #include "core/config/IProfileImport.h"
-#include "core/application/IApplication.h"
+#include "core/application/IApplication.h"  // IWYU pragma: keep.
 #include "core/abort/IAbortInterface.h"
 
 $IPackageBegin(IPubCore, IHttpPythonTest)
@@ -115,7 +115,7 @@ QString IHttpPythonTestTask::getContextScriptDir()
 
 QString IHttpPythonTestTask::getApplicationScriptDir()
 {
-    auto parentPath = IApplication::applicationPath();
+    auto parentPath = IApplication::instance().applicationPath();
     auto path =  parentPath+ "/pytest";
     if(QDir(path).exists()){
         return path;
@@ -187,13 +187,13 @@ void IHttpPythonTestTask::writeConfig()
     $ContextQString ip{"/runtime/tcp/ip", "127.0.0.1"};
     $ContextInt port{"/runtime/tcp/port", 8550};
     $ContextBool isSsl{"/runtime/tcp/ssl", false};
-    stream << "port=\"" << *port << "\"" << endl;
-    stream << "ip=\"" << *ip << "\"" << endl;
-    stream << "isSsl=" << (*isSsl ? "True" : "False") << endl;
+    stream << "port=\"" << *port << "\"\n";
+    stream << "ip=\"" << *ip << "\"\n";
+    stream << "isSsl=" << (*isSsl ? "True" : "False") << "\n";
     if(*isSsl){
-        stream << "serverAddress=\"https://" << *ip << ":" << *port << "\"" << endl;
+        stream << "serverAddress=\"https://" << *ip << ":" << *port << "\"\n";
     }else{
-        stream << "serverAddress=\"http://" << *ip << ":" << *port << "\"" << endl;
+        stream << "serverAddress=\"http://" << *ip << ":" << *port << "\"\n";
     }
 
     file.close();
