@@ -1,7 +1,7 @@
 ﻿#include "IHttpPythonTestTask.h"
 #include "core/config/IContextImport.h"
 #include "core/config/IProfileImport.h"
-#include "core/application/IApplication.h"  // IWYU pragma: keep.
+#include "core/application/iApp.h"
 #include "core/abort/IAbortInterface.h"
 
 $IPackageBegin(IPubCore, IHttpPythonTest)
@@ -115,7 +115,7 @@ QString IHttpPythonTestTask::getContextScriptDir()
 
 QString IHttpPythonTestTask::getApplicationScriptDir()
 {
-    auto parentPath = IApplication::instance().applicationPath();
+    auto parentPath = iApp->applicationPath();
     auto path =  parentPath+ "/pytest";
     if(QDir(path).exists()){
         return path;
