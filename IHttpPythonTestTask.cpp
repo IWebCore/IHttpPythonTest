@@ -181,22 +181,23 @@ void IHttpPythonTestTask::writeConfig()
 {
     auto path = m_scriptDir + "/ServerConfig.py";
     QFile file(path);
-    file.open(QFile::WriteOnly);
-    QTextStream stream(&file);
+    if(file.open(QFile::WriteOnly)){
+        QTextStream stream(&file);
 
-    $ContextQString ip{"/runtime/tcp/ip", "127.0.0.1"};
-    $ContextInt port{"/runtime/tcp/port", 8550};
-    $ContextBool isSsl{"/runtime/tcp/ssl", false};
-    stream << "port=\"" << *port << "\"\n";
-    stream << "ip=\"" << *ip << "\"\n";
-    stream << "isSsl=" << (*isSsl ? "True" : "False") << "\n";
-    if(*isSsl){
-        stream << "serverAddress=\"https://" << *ip << ":" << *port << "\"\n";
-    }else{
-        stream << "serverAddress=\"http://" << *ip << ":" << *port << "\"\n";
+        $ContextQString ip{"/runtime/tcp/ip", "127.0.0.1"};
+        $ContextInt port{"/runtime/tcp/port", 8550};
+        $ContextBool isSsl{"/runtime/tcp/ssl", false};
+        stream << "port=\"" << *port << "\"\n";
+        stream << "ip=\"" << *ip << "\"\n";
+        stream << "isSsl=" << (*isSsl ? "True" : "False") << "\n";
+        if(*isSsl){
+            stream << "serverAddress=\"https://" << *ip << ":" << *port << "\"\n";
+        }else{
+            stream << "serverAddress=\"http://" << *ip << ":" << *port << "\"\n";
+        }
+
+        file.close();
     }
-
-    file.close();
 }
 
 $IPackageEnd(IPubCore, IHttpPythonTest)
